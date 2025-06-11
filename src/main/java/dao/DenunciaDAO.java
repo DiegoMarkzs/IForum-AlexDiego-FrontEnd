@@ -84,11 +84,16 @@ public class DenunciaDAO extends DAO {
 	}
 
 	public List<Denuncia> getAll() throws PersistenciaDacException {
+		System.out.println("Teste");
 		EntityManager em = getEntityManager();
 		List<Denuncia> resultado = null;
 		try {
+			
 			TypedQuery<Denuncia> query = em.createQuery("SELECT d FROM Denuncia d", Denuncia.class);
 			resultado = query.getResultList();
+
+			System.out.println(resultado);
+
 		} catch (PersistenceException pe) {
 			pe.printStackTrace();
 			throw new PersistenciaDacException("Ocorreu algum erro ao tentar recuperar as denuncias.", pe);
@@ -98,4 +103,6 @@ public class DenunciaDAO extends DAO {
 		
 		return resultado;
 	}
+
+	
 }

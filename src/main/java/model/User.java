@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import service.CriptografiaAES;
+
 @Entity
 @Table(name = "TB_USER")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -80,6 +82,7 @@ public abstract class User implements Serializable {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+		
 	}
 	
 

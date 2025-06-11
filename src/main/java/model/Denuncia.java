@@ -29,6 +29,24 @@ public class Denuncia {
     @Column(name = "assunto")
     private String assunto;
 
+    @Column(name = "deferido")
+    private String deferido = "Pendente";
+
+    public void setDeferido(boolean condicao){
+        if(condicao == true){
+        deferido = "Aceita";
+        }
+        else{
+            deferido = "Negada";
+        }
+
+    }
+
+    public String getDeferido(){
+
+        return deferido;
+    }
+
 
     public int GetID(){
         return id;
@@ -57,6 +75,13 @@ public class Denuncia {
 
     public void setAssunto(String assunto){
         this.assunto = assunto;
+    }
+
+    public String toString(){
+        return ("\n ID: " +String.valueOf(id)+ 
+                "\n Titulo:"+titulo+
+                "\n Assunto:"+assunto
+                ) ;
     }
 
 }
