@@ -7,17 +7,41 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name = "TB_DENUNCIA")
-public class Denuncia {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Denuncia {
+
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "usuario_email", referencedColumnName = "ID_Email")
+    private User usuario;
+
+    public void setUsuario(User usuario){
+        this.usuario = usuario;
+    }
 
 
     @Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
+
+    private CategoriaDenuncia categoria;
+
+    public void setCategoria(CategoriaDenuncia categoria){
+        this.categoria = categoria;
+
+    }
+
+    public CategoriaDenuncia getCategoria(){
+        return categoria;
+    }
     
     
 	@Column(name = "data")
