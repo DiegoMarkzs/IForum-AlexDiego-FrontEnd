@@ -98,4 +98,37 @@ public class UserDAO extends DAO {
 		
 		return resultado;
 	}
+
+	public User autenticar(String email, String senha) throws PersistenciaDacException {
+	    EntityManager em = getEntityManager();
+	    User user = null;
+	    try {
+	        TypedQuery<User> query = em.createQuery(
+	            "SELECT u FROM User u WHERE u.email = :email AND u.senha = :senha", User.class);
+	        query.setParameter("email", email);
+	        query.setParameter("senha", senha); // Ideal: aplicar hash aqui
+	        user = query.getSingleResult();
+	    } catch (PersistenceException pe) {
+	        throw new PersistenciaDacException("Erro ao tentar autenticar o usuário.", pe);
+	    } catch (javax.persistence.NoResultException nre) {
+	        user = null;
+	    } finally {
+	        em.close();
+	    }
+	    return user;
+	}
+
+	public boolean emailJaExiste(String email) {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Long> query = em.createQuery(
+                "SELECT COUNT(u) FROM User u WHERE u.email = :email", Long.class);
+            query.setParameter("email", email);
+            Long count = query.getSingleResult();
+            return count > 0;
+        } finally {
+            em.close();
+        }
+    }
+}
 }
