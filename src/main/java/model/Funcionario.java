@@ -7,4 +7,18 @@ import javax.persistence.Table;
 @Table(name = "TB_FUNCIONARIO")
 public class Funcionario extends User {
 
+    private String setor;
+
+    public Funcionario() {
+        super();
+    }
+
+    public String getSetor() {
+        return setor;
+    }
+
+    public void setSetor(String setor) {
+        this.setor = setor;
+    }
 }
+
