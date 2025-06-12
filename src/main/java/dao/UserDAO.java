@@ -118,10 +118,17 @@ public class UserDAO extends DAO {
 	    return user;
 	}
 
-	public boolean emailJaExiste(String email) throws PersistenciaDacException {
-        if (getByID(email) != null)
-			return true;
-
-		return false;
+	public boolean emailJaExiste(String email) {
+        EntityManager em = getEntityManager();
+        try {
+            TypedQuery<Long> query = em.createQuery(
+                "SELECT COUNT(u) FROM User u WHERE u.email = :email", Long.class);
+            query.setParameter("email", email);
+            Long count = query.getSingleResult();
+            return count > 0;
+        } finally {
+            em.close();
+        }
     }
 }
+
