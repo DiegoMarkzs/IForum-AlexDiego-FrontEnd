@@ -13,7 +13,7 @@ public class MainSaveUser {
         User usuario = new Aluno();
        //User usuario = new Funcionario();
 
-        usuario.setEmail("diego.marqueaaasdads@academico.ifpb.edu.br");
+        usuario.setEmail("teste@academico.ifpb.edu.br");
         usuario.setNome("Alex");
         usuario.setSobrenome("Marques");
         usuario.setSenha("123");
