@@ -83,18 +83,18 @@ public class UserDAO extends DAO {
 		return resultado;
 	}
 
-	public List<User> getAll() throws PersistenciaDacException {
-		EntityManager em = getEntityManager();
-		List<User> resultado = null;
-		try {
-			TypedQuery<User> query = em.createQuery("SELECT u FROM User u", User.class);
-			resultado = query.getResultList();
-		} catch (PersistenceException pe) {
-			pe.printStackTrace();
-			throw new PersistenciaDacException("Ocorreu algum erro ao tentar recuperar todos os usuários.", pe);
-		} finally {
-			em.close();
-		}
+		public List<User> getAll() throws PersistenciaDacException {
+			EntityManager em = getEntityManager();
+			List<User> resultado = null;
+			try {
+				TypedQuery<User> query = em.createQuery("SELECT u FROM User u", User.class);
+				resultado = query.getResultList();
+			} catch (PersistenceException pe) {
+				pe.printStackTrace();
+				throw new PersistenciaDacException("Ocorreu algum erro ao tentar recuperar todos os usuários.", pe);
+			} finally {
+				em.close();
+			}
 		
 		return resultado;
 	}
