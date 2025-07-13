@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Listar Denuncias</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <meta charset="utf-8">
+  </head>
+  <body>
+    
+    <header>
+        <h2 class="logo">IForum</h2>
+        <nav class="navegacao">
+          <a href="#">Home</a>
+          <a href="#" id="listarDenuncias">Listar denuncias</a>
+          <button class="botaoSairConta-popup">Sair da conta</button>
+        </nav>
+          
+    </header>
+
+
+    <div class="wrapper">
+      <span class="icon-close">
+        <ion-icon name="close-outline"></ion-icon>
+      </span>
+      
+      <div class="form-box listarEnvios">
+        <h2 class="TituloEnviados">Enviados</h2>
+        <div class="tabela-scroll">
+        <table class="TabelaDenuncias">
+          <tr>
+            <th>Tipo</th>
+            <th>Categoria</th>
+            <th>Status</th>
+          </tr>
+
+           <tr th:each="denuncia : ${denuncias}" onclick="window.location.href='/detalhe/1'">
+            <td th:text="${denuncia.tipoDenuncia}"></td>
+            <td th:text="${denuncia.categoria}"></td>
+            <td th:text="${denuncia.status}"></td>
+        </tr>
+          
+        </table>
+      </div>
+    </div>
+    <script th:src="@{/script.js}" defer></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  </body>
+</html>

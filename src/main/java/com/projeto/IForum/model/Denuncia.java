@@ -41,45 +41,27 @@ public abstract class Denuncia {
     private long id;
 
     @Enumerated(EnumType.STRING)
-    private CategoriaDenuncia categoria;
-
-    public void setCategoria(CategoriaDenuncia categoria){
-        this.categoria = categoria;
-
-    }
-
-    public CategoriaDenuncia getCategoria(){
-        return categoria;
-    }
-    
+    private CategoriaDenuncia categoria;    
     
 	@Column(name = "data")
     private Date data;
 
-    @Column(name = "titulo")
-    private String titulo;
+    private String tipoDenuncia;
 
     @Column(name = "assunto")
     private String assunto;
 
-    @Column(name = "deferido")
-    private String deferido = "Pendente";
+    @Column(name = "status")
+    private String status = "Pendente";
 
-    public void setDeferido(boolean condicao){
+    public void setStatus(boolean condicao){
         if(condicao == true){
-        deferido = "Aceita";
+        status = "Aceita";
         }
         else{
-            deferido = "Negada";
+            status = "Negada";
         }
 
-    }
-
-    public String toString(){
-        return ("\n ID: " +String.valueOf(id)+ 
-                "\n Titulo:"+titulo+
-                "\n Assunto:"+assunto
-                ) ;
     }
 
 }

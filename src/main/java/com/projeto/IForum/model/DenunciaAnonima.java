@@ -9,4 +9,9 @@ import lombok.Data;
 @Data
 public class DenunciaAnonima extends Denuncia{
 
+    public DenunciaAnonima(){
+        this.setTipoDenuncia("anonima");
+
+    }
+
 }
