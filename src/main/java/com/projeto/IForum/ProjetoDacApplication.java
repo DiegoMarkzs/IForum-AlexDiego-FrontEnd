@@ -20,7 +20,7 @@ public class ProjetoDacApplication implements CommandLineRunner{
 	@Autowired
 	private UserService userService;
 
-	@Autowired
+	@Autowired	
 	private DenunciaService denunciaService;
 
 	public static void main(String[] args) {

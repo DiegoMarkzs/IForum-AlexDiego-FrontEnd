@@ -56,4 +56,5 @@ public class DenunciaService {
         denuncia.setUsuario(usuario);
         denunciaRepository.save(denuncia);
     }
+
 }
