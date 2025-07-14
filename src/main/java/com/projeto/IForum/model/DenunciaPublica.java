@@ -16,10 +16,8 @@ public class DenunciaPublica extends Denuncia{
 
     public DenunciaPublica(User usuario){
         this.setUsuario(usuario);
-        this.setTipoDenuncia("publica");
     }
     public DenunciaPublica() {
-        this.setTipoDenuncia("publica");
         
     }
 

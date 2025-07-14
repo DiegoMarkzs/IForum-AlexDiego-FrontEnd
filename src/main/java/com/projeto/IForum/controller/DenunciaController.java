@@ -22,20 +22,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("/denuncias-publicas")
-public class DenunciaPublicaController {
+@RequestMapping("/denuncias")
+public class DenunciaController {
 
     @Autowired
     private DenunciaService denunciaService;
 
    @PostMapping("/save")
-    public ResponseEntity<?> save(@RequestBody DenunciaPublica denuncia) {
+    public ResponseEntity<?> save(@RequestBody Denuncia denuncia) {
         denunciaService.salvar(denuncia);
          return ResponseEntity.status(HttpStatus.CREATED).body(denuncia);
 }
 
  @GetMapping("/{id}")
-    public ResponseEntity<Denuncia> getDenunciaPublicaById(@PathVariable Long id) {
+    public ResponseEntity<Denuncia> getDenunciaById(@PathVariable Long id) {
         Optional<Denuncia> denuncia = denunciaService.buscarPorId(id);
         if (denuncia.isPresent()) {
             return ResponseEntity.ok(denuncia.get());
@@ -45,9 +45,9 @@ public class DenunciaPublicaController {
     }
 
     @PutMapping("/{id}")
-public ResponseEntity<Denuncia> atualizarDenunciaPublica(
+public ResponseEntity<Denuncia> atualizarDenuncia(
         @PathVariable Long id,
-        @RequestBody DenunciaPublica denunciaAtualizada) {
+        @RequestBody Denuncia denunciaAtualizada) {
 
     if (denunciaService.buscarPorId(id) == null) {
         return ResponseEntity.notFound().build();
@@ -59,7 +59,7 @@ public ResponseEntity<Denuncia> atualizarDenunciaPublica(
 }
 
 @DeleteMapping("/{id}")
-public ResponseEntity<Void> deletarDenunciaPublica(@PathVariable Long id) {
+public ResponseEntity<Void> deletarDenuncia(@PathVariable Long id) {
     if (denunciaService.buscarPorId(id) == null) {
         return ResponseEntity.notFound().build();
     }
