@@ -20,12 +20,6 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.persistence.InheritanceType;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
-
 
 @Entity
 @Table(name = "TB_USER")
@@ -38,7 +32,7 @@ public abstract class User implements Serializable {
 	
 
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
-private List<Denuncia> denuncias = new ArrayList<>();
+private List<Relato> relatos = new ArrayList<>();
 		
 
 	@Id

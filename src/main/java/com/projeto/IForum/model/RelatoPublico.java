@@ -3,27 +3,24 @@ package com.projeto.IForum.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+
 
 @Entity
-@Table(name = "TB_DENUNCIA_PUBLICA")
+@Table(name = "TB_RELATO_PUBLICO")
 @Data
-@Getter
-@Setter
-public class DenunciaPublica extends Denuncia{
+public class RelatoPublico extends Relato{
 
 
-    public DenunciaPublica(User usuario){
+    public RelatoPublico(User usuario){
         this.setUsuario(usuario);
     }
-    public DenunciaPublica() {
+    public RelatoPublico() {
         
     }
 
      public void setUsuario(User usuario) {
         if (usuario == null) {
-            throw new IllegalArgumentException("Usuário não pode ser nulo em DenunciaPublica");
+            throw new IllegalArgumentException("Usuário não pode ser nulo em RelatoPublico");
         }
         super.setUsuario(usuario);
     }

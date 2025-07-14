@@ -4,11 +4,11 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.projeto.IForum.model.Denuncia;
+import com.projeto.IForum.model.Relato;
 
 @Repository
-public interface DenunciaRepository extends CrudRepository<Denuncia, Long>{
+public interface RelatoRepository extends CrudRepository<Relato, Long>{
 
-    List<Denuncia> findByCategoria(String categoria);
+    List<Relato> findByCategoria(String categoria);
 
 }

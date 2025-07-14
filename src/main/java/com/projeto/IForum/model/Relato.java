@@ -21,21 +21,21 @@ import jakarta.persistence.InheritanceType;
 
 
 @Entity
-@Table(name = "TB_DENUNCIA")
+@Table(name = "TB_RELATO")
 @Inheritance(strategy = InheritanceType.JOINED)
 @Data
 
 @JsonTypeInfo(
-  use = JsonTypeInfo.Id.NAME,        // usa o nome do tipo
-  include = JsonTypeInfo.As.PROPERTY, // inclui no JSON como propriedade
-  property = "tipoDenuncia"           // nome da propriedade no JSON que identifica o tipo
+  use = JsonTypeInfo.Id.NAME,
+  include = JsonTypeInfo.As.PROPERTY,
+  property = "tipoRelato" // < usado apenas para identificar a subclasse
 )
 @JsonSubTypes({
-  @JsonSubTypes.Type(value = DenunciaAnonima.class, name = "Anonima"),
-  @JsonSubTypes.Type(value = DenunciaPublica.class, name = "Publica")
+  @JsonSubTypes.Type(value = RelatoAnonimo.class, name = "Anonima"),
+  @JsonSubTypes.Type(value = RelatoPublico.class, name = "Publica")
 })
 
-public abstract class Denuncia {
+public abstract class Relato {
 
     @ManyToOne(optional = true)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
@@ -51,7 +51,7 @@ public abstract class Denuncia {
     private long id;
 
     @Enumerated(EnumType.STRING)
-    private CategoriaDenuncia categoria;    
+    private CategoriaRelato categoria;    
     
 	@Column(name = "data")
     private Date data;
@@ -59,18 +59,16 @@ public abstract class Denuncia {
     @Column(name = "assunto")
     private String assunto;
 
+    @Column(name = "tipo_de_relato")
+    @Enumerated(EnumType.STRING)
+    private TipoRelato tipo;
+
     @Column(name = "status")
-    private String status = "Pendente";
+    private StatusRelato status = StatusRelato.PENDENTE;
 
-    public void setStatus(boolean condicao){
-        if(condicao == true){
-        status = "Aceita";
-        }
-        else{
-            status = "Negada";
-        }
 
-    }
+
+    
 
 }
 

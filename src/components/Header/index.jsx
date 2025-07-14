@@ -6,7 +6,8 @@ function Header({ onListarDenuncias }) {
       <h2 className={styles.logo}>IForum</h2>
       <nav className={styles.navegacao}>
         <a href="#">Home</a>
-        <a href="#" onClick={onListarDenuncias}>Listar denúncias</a>
+        <a href="#" onClick={onListarDenuncias}>Listar relatos</a>
+        <a href="#" >Fazer relato</a>
         <button className={styles.botaoSairContaPopup}>Sair da conta</button>
       </nav>
     </header>

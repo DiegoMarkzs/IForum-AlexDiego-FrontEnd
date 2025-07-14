@@ -1,6 +1,6 @@
 package com.projeto.IForum.model;
 
-public enum CategoriaDenuncia {
+public enum CategoriaRelato {
 
     infraestrutura,
     seguranca,

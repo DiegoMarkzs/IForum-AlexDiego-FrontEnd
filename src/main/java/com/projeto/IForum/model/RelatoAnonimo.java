@@ -5,11 +5,11 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "TB_DENUNCIA_ANONIMA")
+@Table(name = "TB_RELATO_ANONIMO")
 @Data
-public class DenunciaAnonima extends Denuncia{
+public class RelatoAnonimo extends Relato{
 
-    public DenunciaAnonima(){
+    public RelatoAnonimo(){
     }
 
 }
