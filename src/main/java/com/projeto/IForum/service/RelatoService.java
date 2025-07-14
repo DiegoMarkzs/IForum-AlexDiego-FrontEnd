@@ -3,6 +3,8 @@ package com.projeto.IForum.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,12 @@ public class RelatoService {
         iterable.forEach(lista::add);
         return lista;
     }
+
+    public List<Relato> buscarTodos() {
+    Iterable<Relato> iterable = relatoRepository.findAll();
+    return StreamSupport.stream(iterable.spliterator(), false)
+                        .collect(Collectors.toList());
+}
 
    
     public void deletarPorId(Long id) {

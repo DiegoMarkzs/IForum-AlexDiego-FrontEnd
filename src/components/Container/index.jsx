@@ -1,10 +1,23 @@
+import React, { useEffect, useState } from 'react';
 import styles from './Container.module.css';
 
 function Container({ onClose }) {
-  const denuncias = [
-    { id: 1, tipoDenuncia: 'Anonima', categoria: 'Corrupção', status: 'Aberta' },
-    { id: 2, tipoDenuncia: 'Pública', categoria: 'Assédio', status: 'Fechada' },
-  ];
+  const [relatos, setRelatos] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:8080/relatos')
+      .then(res => {
+        if (!res.ok) throw new Error('Erro ao carregar relatos');
+        return res.json();
+      })
+      .then(data => {
+        setRelatos(data);
+      })
+      .catch(err => {
+        console.error(err);
+        setRelatos([]);
+      });
+  }, []);
 
   return (
     <div className={styles.wrapper}>
@@ -24,16 +37,22 @@ function Container({ onClose }) {
             </tr>
           </thead>
           <tbody>
-            {denuncias.map((denuncia) => (
-              <tr
-                key={denuncia.id}
-                onClick={() => (window.location.href = `/detalhe/${denuncia.id}`)}
-              >
-                <td>{denuncia.tipoDenuncia}</td>
-                <td>{denuncia.categoria}</td>
-                <td>{denuncia.status}</td>
+            {relatos.length === 0 ? (
+              <tr>
+                <td colSpan="3">Nenhum relato encontrado</td>
               </tr>
-            ))}
+            ) : (
+              relatos.map((relato) => (
+                <tr
+                  key={relato.id}
+                  onClick={() => (window.location.href = `/detalhe/${relato.id}`)}
+                >
+                  <td>{relato.tipo || ''}</td>
+                  <td>{relato.categoria}</td>
+                  <td>{relato.status}</td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>
