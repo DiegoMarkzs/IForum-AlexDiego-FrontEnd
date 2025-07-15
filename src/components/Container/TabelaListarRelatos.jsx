@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import styles from './Container.module.css';
+import styles from './TabelaListarRelatos.module.css';
 
-function Container({ onClose }) {
+function Container({ onClose, onRelatoClick }) {
   const [relatos, setRelatos] = useState([]);
 
   useEffect(() => {
@@ -45,7 +45,8 @@ function Container({ onClose }) {
               relatos.map((relato) => (
                 <tr
                   key={relato.id}
-                  onClick={() => (window.location.href = `/detalhe/${relato.id}`)}
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => onRelatoClick(relato)}
                 >
                   <td>{relato.tipo || ''}</td>
                   <td>{relato.categoria}</td>
@@ -59,5 +60,6 @@ function Container({ onClose }) {
     </div>
   );
 }
+
 
 export default Container;

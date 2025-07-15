@@ -1,5 +1,6 @@
 package com.projeto.IForum.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +25,7 @@ public class RelatoService {
     private RelatoRepository relatoRepository;
 
     public Relato salvar(Relato relato) {
+        relato.setData(LocalDate.now());
         return relatoRepository.save(relato);
     }
 
@@ -64,5 +66,30 @@ public class RelatoService {
         relato.setUsuario(usuario);
         relatoRepository.save(relato);
     }
+
+    @Transactional
+public Relato atualizarRelato(Long id, Relato novo) {
+    Relato relatoExistente = relatoRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Relato não encontrado"));
+    boolean tipoMudou = !relatoExistente.getClass().equals(novo.getClass());
+
+    if (tipoMudou) {
+        relatoRepository.deleteById(id);
+        novo.setId(0);
+        novo.setData(LocalDate.now());
+        return relatoRepository.save(novo);
+    }
+
+    relatoExistente.setAssunto(novo.getAssunto());
+    relatoExistente.setCategoria(novo.getCategoria());
+    relatoExistente.setTipo(novo.getTipo());
+    relatoExistente.setData(LocalDate.now());
+
+    return relatoRepository.save(relatoExistente);
+}
+
+    
+
+    
 
 }

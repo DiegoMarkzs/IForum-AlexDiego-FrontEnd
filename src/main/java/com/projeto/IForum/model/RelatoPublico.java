@@ -10,6 +10,8 @@ import lombok.Data;
 @Data
 public class RelatoPublico extends Relato{
 
+    
+
 
     public RelatoPublico(User usuario){
         this.setUsuario(usuario);

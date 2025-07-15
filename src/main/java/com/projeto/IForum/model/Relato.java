@@ -1,6 +1,7 @@
 package com.projeto.IForum.model;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -28,7 +29,7 @@ import jakarta.persistence.InheritanceType;
 @JsonTypeInfo(
   use = JsonTypeInfo.Id.NAME,
   include = JsonTypeInfo.As.PROPERTY,
-  property = "tipoRelato" // < usado apenas para identificar a subclasse
+  property = "tipoRelato" 
 )
 @JsonSubTypes({
   @JsonSubTypes.Type(value = RelatoAnonimo.class, name = "Anonima"),
@@ -54,7 +55,7 @@ public abstract class Relato {
     private CategoriaRelato categoria;    
     
 	@Column(name = "data")
-    private Date data;
+    private LocalDate data;
 
     @Column(name = "assunto")
     private String assunto;

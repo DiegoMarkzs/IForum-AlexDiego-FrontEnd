@@ -9,6 +9,8 @@ import lombok.Data;
 @Data
 public class RelatoAnonimo extends Relato{
 
+    
+
     public RelatoAnonimo(){
     }
 
