@@ -1,0 +1,143 @@
+.wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 420px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  z-index: 200;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.iconClose {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45px;
+  height: 45px;
+  background: #162938;
+  font-size: 2em;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom-left-radius: 20px;
+  cursor: pointer;
+  z-index: 10;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.iconClose:hover {
+  background-color: #3a89c5;
+}
+
+.title {
+  font-size: 2em;
+  color: #3a89c5;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.formGroup input[type="text"],
+.formGroup input[type="date"] {
+  border-radius: 8px;
+  padding: 8px;
+  border: none;
+  font-size: 1em;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.formGroup input[disabled] {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.statusLabel {
+  font-weight: bold;
+  color: #3a89c5;
+  font-size: 1.2em;
+  padding: 5px 0;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.botaoAprovar {
+  background-color: rgb(0, 192, 92);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  flex: 1;
+  transition: background-color 0.3s ease;
+}
+
+.botaoAprovar:hover {
+  background-color: rgb(0, 160, 72);
+}
+
+.botaoRejeitar {
+  background-color: rgb(220, 53, 69);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  flex: 1;
+  transition: background-color 0.3s ease;
+}
+
+.botaoRejeitar:hover {
+  background-color: rgb(200, 30, 50);
+}
+
+.linkArquivo {
+  color: #007bff;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.semArquivo {
+  color: gray;
+  font-style: italic;
+}
+
+.mensagemFinalizada {
+  font-weight: bold;
+  color: green;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+
+.mensagemFinalizada {
+  font-weight: bold;
+  color: green;
+  margin-top: 1rem;
+  text-align: center;
+}
+

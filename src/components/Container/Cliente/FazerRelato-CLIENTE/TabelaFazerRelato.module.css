@@ -71,6 +71,14 @@
   font-size: 0.9em;
 }
 
+.fileGroup {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+
 .checkboxGroup {
   display: flex;
   align-items: center;

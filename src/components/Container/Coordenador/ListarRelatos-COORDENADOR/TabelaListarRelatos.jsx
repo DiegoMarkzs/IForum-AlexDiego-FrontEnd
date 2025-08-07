@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './TabelaListarRelatos.module.css';
 
 function Container({ onClose, onRelatoClick }) {
   const [relatos, setRelatos] = useState([]);
+  const [filtroStatus, setFiltroStatus] = useState('');
+  const [filtroTipo, setFiltroTipo] = useState('');
 
   useEffect(() => {
     fetch('http://localhost:8080/relatos')
@@ -19,6 +21,12 @@ function Container({ onClose, onRelatoClick }) {
       });
   }, []);
 
+  const relatosFiltrados = relatos.filter(relato => {
+    const statusOk = !filtroStatus || relato.status === filtroStatus;
+    const tipoOk = !filtroTipo || relato.tipo === filtroTipo;
+    return statusOk && tipoOk;
+  });
+
   return (
     <div className={styles.wrapper}>
       <span className={styles.iconClose} onClick={onClose}>
@@ -26,6 +34,22 @@ function Container({ onClose, onRelatoClick }) {
       </span>
 
       <h2 className={styles.title}>Enviados</h2>
+
+      {/* Os optionPane do filtro */}
+      <div className={styles.filtros}>
+        <select value={filtroStatus} onChange={e => setFiltroStatus(e.target.value)}>
+          <option value="">Todos os status</option>
+          <option value="PENDENTE">Pendente</option>
+          <option value="ACEITO">Aceito</option>
+          <option value="RECUSADO">Recusado</option>
+        </select>
+
+        <select value={filtroTipo} onChange={e => setFiltroTipo(e.target.value)}>
+          <option value="">Todos os tipos</option>
+          <option value="SUGESTAO">Sugestão</option>
+          <option value="DENUNCIA">Denúncia</option>
+        </select>
+      </div>
 
       <div className={styles.tableContainer}>
         <table className={styles.tabela}>
@@ -37,20 +61,20 @@ function Container({ onClose, onRelatoClick }) {
             </tr>
           </thead>
           <tbody>
-            {relatos.length === 0 ? (
+            {relatosFiltrados.length === 0 ? (
               <tr>
                 <td colSpan="3">Nenhum relato encontrado</td>
               </tr>
             ) : (
-              relatos.map((relato) => (
+              relatosFiltrados.map(relato => (
                 <tr
                   key={relato.id}
                   style={{ cursor: 'pointer' }}
                   onClick={() => onRelatoClick(relato)}
                 >
                   <td>{relato.tipo || ''}</td>
-                  <td>{relato.categoria}</td>
-                  <td>{relato.status}</td>
+                  <td>{relato.categoria || ''}</td>
+                  <td>{relato.status || ''}</td>
                 </tr>
               ))
             )}
@@ -60,6 +84,5 @@ function Container({ onClose, onRelatoClick }) {
     </div>
   );
 }
-
 
 export default Container;

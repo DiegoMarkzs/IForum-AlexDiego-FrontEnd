@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './RelatoAnalise.module.css';
 
 function RelatoAnalise({ relato, onClose }) {
@@ -18,6 +18,7 @@ function RelatoAnalise({ relato, onClose }) {
     categoria,
     tipoRelato: relato.tipoRelato === 'SUGESTAO' ? 'SUGESTAO' : 'DENUNCIA',
     anonimo: relato.anonimo || false,
+    status: relato.status,
   };
 
   fetch(`http://localhost:8080/relatos/${relato.id}`, {
@@ -29,9 +30,7 @@ function RelatoAnalise({ relato, onClose }) {
   })
   .then(async (res) => {
     if (!res.ok) {
-      const errorBody = await res.json().catch(() => ({}));
-      const errorMsg = errorBody.message || JSON.stringify(errorBody);
-      throw new Error(`Erro ao editar relato: ${errorMsg}`);
+      throw new Error(`Erro ao editar relato`);
     }
     alert('Relato atualizado com sucesso!');
     onClose();
@@ -95,7 +94,7 @@ function RelatoAnalise({ relato, onClose }) {
       <div className={styles.formGroup}>
         <label>Arquivo:</label>
         <input type="file" onChange={handleArquivoChange} />
-        {arquivo && <p>Arquivo selecionado: {arquivo.name}</p>}
+        {arquivo && <p></p>}
       </div>
 
       <div className={styles.formGroup}>

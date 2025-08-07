@@ -1,0 +1,89 @@
+.container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: 1.8rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.form input {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.botaoSalvar {
+  margin-top: 20px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.botaoSalvar:hover {
+  background-color: #45a049;
+}
+
+.botaoExcluir {
+  margin: 20px auto 0 auto; /* margem top e centraliza horizontalmente */
+  padding: 0.6rem 1.2rem;
+  background-color: #c62828;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;
+  width: fit-content;
+  font-size: 1rem;
+}
+
+.botaoExcluir:hover {
+  background-color: #f70101;
+}
+
+.iconVoltar {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.iconVoltar:hover {
+  color: #21db09;
+}
